@@ -43,3 +43,14 @@ In the list, all the tasks are represented as the card.
 The card has a title, description and a "done" button. 
 Click on the button sends a request to the backend.
 After a successful reply, the website removes the card from the todo list.
+
+### Wireframes
+
+*All diagrams available on [Source](https://drive.google.com/file/d/1uJOUcLeR_iM6pSZ1ILsbYSvKr5VdZNBS/view?usp=sharing)*
+
+Main page, calls `list` route from backend.
+
+![Index](_assets/MainPage.jpg "Main page")
+
+The modal popup when clicked to the **New** button.
+![Add Task](_assets/AddModal.jpg "Modal wireframe for adding a new task")

@@ -2,11 +2,10 @@ module github.com/ahmetson/today-do
 
 go 1.21rc2
 
-replace github.com/ahmetson/config-lib => D:/sds/config-lib
-
 require (
 	github.com/ahmetson/common-lib v0.0.0-20230825195825-e7b69549b9a1
-	github.com/ahmetson/handler-lib v0.0.0-20230908055435-ceab4155ee16
+	github.com/ahmetson/handler-lib v0.0.0-20230908131929-cc3f442578d3
+	github.com/ahmetson/service-lib v0.0.0-20230908133123-fca35f266f48
 )
 
 require (
@@ -15,11 +14,10 @@ require (
 	github.com/ProtonMail/go-crypto v0.0.0-20230828082145-3c4c8a2d2371 // indirect
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/ahmetson/client-lib v0.0.0-20230908110757-5f62078bd7bd // indirect
-	github.com/ahmetson/config-lib v0.0.0-20230908111518-e87be1a97d4c // indirect
-	github.com/ahmetson/dev-lib v0.0.0-20230908073741-33d7893d546a // indirect
+	github.com/ahmetson/config-lib v0.0.0-20230908120313-ee58ff67288b // indirect
+	github.com/ahmetson/dev-lib v0.0.0-20230908111619-cbd749a2060f // indirect
 	github.com/ahmetson/log-lib v0.0.0-20230908112453-62afbc558b65 // indirect
 	github.com/ahmetson/os-lib v0.0.0-20230908110839-83535270d872 // indirect
-	github.com/ahmetson/service-lib v0.0.0-20230908075843-c9fccd47a308 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.3.2 // indirect
@@ -38,7 +36,6 @@ require (
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/holiman/uint256 v1.2.3 // indirect
-	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
@@ -64,7 +61,6 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.16.0 // indirect
-	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect

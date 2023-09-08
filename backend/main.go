@@ -6,7 +6,6 @@ import (
 	"github.com/ahmetson/common-lib/message"
 	"github.com/ahmetson/handler-lib/sync_replier"
 	"github.com/ahmetson/service-lib"
-	"sync"
 )
 
 const (
@@ -110,14 +109,14 @@ func main() {
 
 	todayDo.SetHandler("main", syncReplier)
 
-	err = todayDo.Start()
+	wg, err := todayDo.Start()
 	if err != nil {
 		panic(err)
 	}
 
-	println("started")
+	println("waiting for the operations...")
 
-	var wg sync.WaitGroup
-	wg.Add(1)
 	wg.Wait()
+
+	println("close the app")
 }

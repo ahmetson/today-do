@@ -7,5 +7,9 @@
 /dataSources/
 /dataSources.local.xml
 /backend/vendor
+/backend/bin/_sds
+/backend/bin/test*
+/cli/vendor
+/cli/bin/test*
 /frontend/vendor
 /frontend/node_modules

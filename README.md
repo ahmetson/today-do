@@ -54,3 +54,40 @@ Main page, calls `list` route from backend.
 
 The modal popup when clicked to the **New** button.
 ![Add Task](_assets/AddModal.jpg "Modal wireframe for adding a new task")
+
+---
+# Usage
+
+Compile the `backend`:
+
+```powershell
+go build -o ./bin/test.exe
+```
+
+The backend comes with the pre-generated configuration.
+This app configuration is stored in `./backend/bin/app.yml`.
+If the backend binary stored in the same directory, then the app will load `app.yml` automatically.
+
+You may delete that to automatically generate a new configuration.
+
+## Run
+Any service requires its *id* and *url*.
+If you use `app.yml`, then call the app with:
+```shell
+./bin/test --id=todaydo --url=github.com/ahmetson/today-do
+```
+
+## Test from command line interface
+Compile the `cli`.
+Remember the manager port and handler port from app.yml.
+Run it on another terminal.
+
+> Make sure that you run the backend first.
+
+Port `57397` is the manager.
+Port `57398` is the manager.
+
+* `./bin/test --port=57397 --cmd=close` &ndash; close the service.
+* `./bin/test --port=57398 --cmd=add` &ndash; add a new task.
+* `./bin/test --port=57398 --cmd=done --number=1` &ndash; delete the task by its order number.
+* `./bin/test --port=57398 --cmd=list` &ndash; returns all tasks.

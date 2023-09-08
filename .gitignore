@@ -11,5 +11,8 @@
 /backend/bin/test*
 /cli/vendor
 /cli/bin/test*
+/proxy/bin/test*
+/proxy/bin/_sds
+/proxy/vendor
 /frontend/vendor
 /frontend/node_modules

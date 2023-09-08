@@ -88,5 +88,18 @@ func main() {
 		}
 
 		fmt.Printf("replied: %v\n", reply)
+	} else if cmd == "close" {
+		fmt.Printf("flag --port must point to the manager of the service")
+		req := message.Request{
+			Command:    "close",
+			Parameters: key_value.Empty(),
+		}
+
+		err = backend.Submit(&req)
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Printf("close signal send, check in other terminal that app is closed\n")
 	}
 }

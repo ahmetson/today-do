@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "fbf49c5d-5935-4d4b-ba64-b464691d3637",
+		"name": "Today Do",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6399301"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"command\": \"list\",\r\n    \"parameters\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2626",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2626"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"command\": \"add\",\r\n    \"parameters\": {\r\n        \"title\": \"welcome\",\r\n        \"description\": \"hello and welcome\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2626",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2626"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Done",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"command\": \"done\",\r\n    \"parameters\": {\r\n        \"number\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2626",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2626"
+				}
+			},
+			"response": []
+		}
+	]
+}

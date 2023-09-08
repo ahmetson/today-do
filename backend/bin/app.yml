@@ -1,0 +1,18 @@
+services:
+    - type: Independent
+      url: github.com/ahmetson/today-do
+      id: todaydo
+      manager:
+        serviceurl: github.com/ahmetson/today-do
+        id: manager_1
+        port: 57397
+        targettype: 4
+      handlers:
+        - type: SyncReplier
+          category: main
+          instanceamount: 1
+          port: 57398
+          id: main_1
+      proxies: []
+      extensions: []
+      proxyorder: []

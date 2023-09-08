@@ -91,3 +91,8 @@ Port `57398` is the manager.
 * `./bin/test --port=57398 --cmd=add` &ndash; add a new task.
 * `./bin/test --port=57398 --cmd=done --number=1` &ndash; delete the task by its order number.
 * `./bin/test --port=57398 --cmd=list` &ndash; returns all tasks.
+
+## Proxy
+
+The proxy has a Postman collections. 
+If you use custom generated `backend/bin/app.yml`, then change the port in the postman collection.

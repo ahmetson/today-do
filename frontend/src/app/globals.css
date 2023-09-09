@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+div > header {
+  padding-top: 1rem;
+}
+
+div > header > h1 {
+  margin-bottom: 0.2em;
+  padding-left: 1em;
+}
+
+
+div > header > sub {
+  padding-left: 1em;
+}
+
+div > header > sub > a {
+  text-decoration: underline;
+}
+
+
+div > header > button {
+  width: fit-content;
+  position: absolute;
+  right: 3rem;
+}
+
+.task {
+  position: relative;
+}
+
+.task > h2 {
+  line-height: 1.5em;
+  height: 3em;
+  font-size: 1.5em;
+  text-overflow-mode: clip;
+  overflow: hidden;
+}
+
+.task > p {
+  max-height: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2rem;
+  left: 50%;
+}
+
+.task > button {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  left: 50%;
+  margin-bottom: 0.25em;
+}

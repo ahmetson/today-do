@@ -3,10 +3,10 @@ services:
       url: github.com/ahmetson/today-do
       id: todaydo
       manager:
-        serviceurl: github.com/ahmetson/today-do
+        serviceurl: ""
         id: manager_1
         port: 57397
-        targettype: 4
+        targettype: 0
       handlers:
         - type: SyncReplier
           category: main

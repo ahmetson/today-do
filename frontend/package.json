@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "backend": "..\\backend\\bin\\test --id=todaydo --url=github.com/ahmetson/today-do",
+    "proxy": "..\\proxy\\bin\\test --id=web --url=github.com/ahmetson/today-do/proxy --destination=todaydo --config=../../backend/bin/app.yml",
+    "dev-full": "concurrently --kill-others \"npm run backend\" \"npm run proxy\" \"npm run dev\" "
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -28,6 +31,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/react-modal": "^3.16.0"
+    "@types/react-modal": "^3.16.0",
+    "concurrently": "^8.2.1"
   }
 }

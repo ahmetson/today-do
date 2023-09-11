@@ -1,6 +1,7 @@
 module github.com/ahmetson/today-do/proxy
 
 go 1.21rc2
+replace github.com/ahmetson/web-lib => D:/sds/web-lib
 
 require (
 	dario.cat/mergo v1.0.0 // indirect

@@ -45,7 +45,7 @@ div > header > sub > a {
 }
 
 
-div > header > button {
+.new-button {
   width: fit-content;
   position: absolute;
   right: 3rem;
@@ -77,4 +77,41 @@ div > header > button {
   transform: translateX(-50%);
   left: 50%;
   margin-bottom: 0.25em;
+}
+/*Popup*/
+
+.new-task-modal {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.16) 0 0 3px;
+}
+
+.new-task-modal h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.new-task-modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  width: 1.75rem;
+  height: 1.75rem;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
+
+.close-button:hover {
+  width: 1.9rem;
+  height: 1.9rem;
 }

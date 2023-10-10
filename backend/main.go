@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/ahmetson/common-lib/data_type/key_value"
-	"github.com/ahmetson/common-lib/message"
+	"github.com/ahmetson/datatype-lib/data_type/key_value"
+	"github.com/ahmetson/datatype-lib/message"
 	"github.com/ahmetson/handler-lib/sync_replier"
 	"github.com/ahmetson/service-lib"
 )
@@ -24,7 +24,7 @@ type Task struct {
 
 var list key_value.KeyValue
 
-func onList(request message.Request) message.Reply {
+func onList(request message.RequestInterface) message.ReplyInterface {
 	todoList := make([]Task, len(list))
 
 	i := 0
@@ -35,18 +35,18 @@ func onList(request message.Request) message.Reply {
 		i++
 	}
 
-	params := key_value.Empty().Set("list", todoList)
+	params := key_value.New().Set("list", todoList)
 
 	return request.Ok(params)
 }
 
-func onAdd(request message.Request) message.Reply {
-	title, err := request.Parameters.GetString("title")
+func onAdd(request message.RequestInterface) message.ReplyInterface {
+	title, err := request.RouteParameters().StringValue("title")
 	if err != nil {
 		return request.Fail(fmt.Sprintf("request.Parameters.GetString('title'): %v", err))
 	}
 
-	description, err := request.Parameters.GetString("description")
+	description, err := request.RouteParameters().StringValue("description")
 	if err != nil {
 		return request.Fail(fmt.Sprintf("request.Parameters.GetString('description'): %v", err))
 	}
@@ -62,13 +62,13 @@ func onAdd(request message.Request) message.Reply {
 
 	list.Set(fmt.Sprintf("%d", number), task)
 
-	params := key_value.Empty().Set("number", number)
+	params := key_value.New().Set("number", number)
 
 	return request.Ok(params)
 }
 
-func onDone(request message.Request) message.Reply {
-	number, err := request.Parameters.GetUint64("number")
+func onDone(request message.RequestInterface) message.ReplyInterface {
+	number, err := request.RouteParameters().Uint64Value("number")
 	if err != nil {
 		return request.Fail(fmt.Sprintf("request.Parameters.GetUint64('number'): %v", err))
 	}
@@ -81,11 +81,11 @@ func onDone(request message.Request) message.Reply {
 
 	delete(list, numberStr)
 
-	return request.Ok(key_value.Empty())
+	return request.Ok(key_value.New())
 }
 
 func main() {
-	list = key_value.Empty()
+	list = key_value.New()
 	tasksAmount = 0
 
 	syncReplier := sync_replier.New()

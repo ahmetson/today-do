@@ -3,8 +3,8 @@ module github.com/ahmetson/today-do
 go 1.21rc2
 
 require (
-	github.com/ahmetson/common-lib v0.0.0-20230825195825-e7b69549b9a1
-	github.com/ahmetson/handler-lib v0.0.0-20230908131929-cc3f442578d3
+	github.com/ahmetson/datatype-lib v0.0.0-20230927201942-0cc58292a7a3
+	github.com/ahmetson/handler-lib v0.0.0-20231007103937-8309b09aa89b
 	github.com/ahmetson/service-lib v0.0.0-20230908133123-fca35f266f48
 )
 
@@ -13,20 +13,17 @@ require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20230828082145-3c4c8a2d2371 // indirect
 	github.com/acomagu/bufpipe v1.0.4 // indirect
-	github.com/ahmetson/client-lib v0.0.0-20230908110757-5f62078bd7bd // indirect
-	github.com/ahmetson/config-lib v0.0.0-20230908120313-ee58ff67288b // indirect
-	github.com/ahmetson/dev-lib v0.0.0-20230908111619-cbd749a2060f // indirect
+	github.com/ahmetson/client-lib v0.0.0-20231004170410-5cb1c2b5a2cd // indirect
+	github.com/ahmetson/config-lib v0.0.0-20231010185341-0bd6e259eced // indirect
+	github.com/ahmetson/dev-lib v0.0.0-20231010185437-ab3f1d3a787d // indirect
 	github.com/ahmetson/log-lib v0.0.0-20230908112453-62afbc558b65 // indirect
-	github.com/ahmetson/os-lib v0.0.0-20230908110839-83535270d872 // indirect
+	github.com/ahmetson/os-lib v0.0.0-20231002120043-1c5bcc771249 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
-	github.com/btcsuite/btcd/btcec/v2 v2.3.2 // indirect
 	github.com/charmbracelet/lipgloss v0.8.0 // indirect
 	github.com/charmbracelet/log v0.2.4 // indirect
 	github.com/cloudflare/circl v1.3.3 // indirect
-	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.2.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
-	github.com/ethereum/go-ethereum v1.12.2 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.4.1 // indirect
@@ -35,7 +32,6 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/holiman/uint256 v1.2.3 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect

@@ -2,6 +2,22 @@ module github.com/ahmetson/today-do
 
 go 1.21rc2
 
+replace github.com/ahmetson/datatype-lib => D:/sds/datatype-lib
+
+replace github.com/ahmetson/handler-lib => D:/sds/handler-lib
+
+replace github.com/ahmetson/client-lib => D:/sds/client-lib
+
+replace github.com/ahmetson/config-lib => D:/sds/config-lib
+
+replace github.com/ahmetson/dev-lib => D:/sds/dev-lib
+
+replace github.com/ahmetson/os-lib => D:/sds/os-lib
+
+replace github.com/ahmetson/log-lib => D:/sds/log-lib
+
+replace github.com/ahmetson/service-lib => D:/sds/service-lib
+
 require (
 	github.com/ahmetson/datatype-lib v0.0.0-20230927201942-0cc58292a7a3
 	github.com/ahmetson/handler-lib v0.0.0-20231007103937-8309b09aa89b

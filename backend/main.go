@@ -120,9 +120,18 @@ func main() {
 		Url:      "github.com/ahmetson/web-proxy",
 		Category: "entry",
 	}
+	listLocal := serviceConfig.Local{
+		LocalBin: filepath.Join(path.BinPath("../list-proxy/bin", "test")),
+	}
+	listProxy := &serviceConfig.Proxy{
+		Local:    &listLocal,
+		Id:       "list-proxy",
+		Url:      "github.com/ahmetson/today-do/list-local",
+		Category: "convert",
+	}
 	serviceRule := serviceConfig.NewServiceDestination(todayDo.Url())
 	fmt.Printf("service rule: %v to %s\n", *serviceRule, todayDo.Url())
-	proxyChain, err := serviceConfig.NewProxyChain(webProxy, serviceRule)
+	proxyChain, err := serviceConfig.NewProxyChain([]*serviceConfig.Proxy{webProxy, listProxy}, serviceRule)
 	if err != nil {
 		panic(err)
 	}

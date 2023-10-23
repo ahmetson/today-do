@@ -7,7 +7,10 @@ import (
 	"github.com/ahmetson/datatype-lib/data_type/key_value"
 	"github.com/ahmetson/datatype-lib/message"
 	"github.com/ahmetson/os-lib/arg"
+	"github.com/ahmetson/os-lib/net"
+	"github.com/ahmetson/os-lib/process"
 	"github.com/pebbe/zmq4"
+	"os"
 	"strconv"
 	"time"
 )
@@ -90,18 +93,104 @@ func main() {
 
 		fmt.Printf("replied: %v\n", reply)
 	} else if cmd == "close" {
-		fmt.Printf("flag --port must point to the manager of the service")
+		fmt.Printf("flag --port must point to the manager of the service\n")
 		req := message.Request{
+			Command:    "heartbeat",
+			Parameters: key_value.New(),
+		}
+
+		reply, err := backend.Request(&req)
+		if err != nil {
+			panic(err)
+		}
+		if !reply.IsOK() {
+			fmt.Printf("heartbeat failed with '%s' error, is it closed or run --same-process to check is it running", reply.ErrorMessage())
+			return
+		}
+
+		req = message.Request{
 			Command:    "close",
 			Parameters: key_value.New(),
 		}
 
-		err = backend.Submit(&req)
+		reply, err = backend.Request(&req)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("reply: ok? %v error message: %s\n", reply.IsOK(), reply.ErrorMessage())
+
+		fmt.Printf("close signal send, check in other terminal that app is closed\n")
+	} else if cmd == "same-process" {
+		if !arg.FlagExist("port-2") {
+			panic("flag --port-2 not set")
+		}
+
+		port2 := arg.FlagValue("port-2")
+
+		portNum, err := strconv.Atoi(port)
+		if err != nil {
+			panic(err)
+		}
+		portNum2, err := strconv.Atoi(port2)
 		if err != nil {
 			panic(err)
 		}
 
-		fmt.Printf("close signal send, check in other terminal that app is closed\n")
+		used := net.IsPortUsed("localhost", portNum)
+		used2 := net.IsPortUsed("localhost", portNum2)
+		if !used && !used2 {
+			fmt.Printf("both ports are not used\n")
+			return
+		}
+		if !used {
+			fmt.Printf("port %s not used\n", port)
+		}
+		if !used2 {
+			fmt.Printf("port %s not used\n", port2)
+		}
+
+		pid := uint64(0)
+		pid2 := uint64(0)
+		if used {
+			pid, err = process.PortToPid(portNum)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Printf("port %s pid %d\n", port, pid)
+		}
+		if used2 {
+			pid2, err = process.PortToPid(portNum2)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Printf("port %s pid %d\n", port2, pid2)
+		}
+
+		if used && used2 {
+			fmt.Printf("same process? %v\n", pid == pid2)
+		}
+	} else if cmd == "kill" {
+		if !arg.FlagExist("pid") {
+			panic("flag --pid not set")
+		}
+		pid := arg.FlagValue("pid")
+
+		pidNum, err := strconv.Atoi(pid)
+		if err != nil {
+			panic(err)
+		}
+
+		proc, err := os.FindProcess(pidNum)
+		if err != nil {
+			panic(err)
+		}
+
+		err = proc.Kill()
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Printf("process with id %s killed\n", pid)
 	} else if cmd == "units" {
 		fmt.Printf("fetch the units from service manager")
 

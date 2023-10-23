@@ -31,6 +31,22 @@ services:
                   id: web-proxymain_1
                   port: 54363
                   zmq_type: 6
+            - proxy:
+                local:
+                    local_bin: ..\list-proxy\bin\test.exe
+                id: list-proxy
+                url: github.com/ahmetson/today-do/list-local
+                category: convert
+              manager:
+                url: github.com/ahmetson/today-do/list-local
+                id: list-proxy_manager
+                port: 58563
+                zmq_type: 4
+              clients:
+                - url: github.com/ahmetson/today-do/list-local
+                  id: list-proxymain_1
+                  port: 58564
+                  zmq_type: 4
           rule:
             urls:
                 - github.com/ahmetson/today-do

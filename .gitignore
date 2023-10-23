@@ -16,3 +16,4 @@
 /proxy/vendor
 /frontend/vendor
 /frontend/node_modules
+*.exe

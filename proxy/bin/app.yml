@@ -13,4 +13,9 @@ services:
           instance_amount: 1
           port: 54363
           id: web-proxymain_1
+        - type: Replier
+          category: web-proxylist-proxymain
+          instance_amount: 1
+          port: 58569
+          id: web-proxylist-proxymain_1
 proxy_chains: []

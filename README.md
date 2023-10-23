@@ -1,11 +1,21 @@
 # Today do
 
+> **Changelog**
+> 
 > 8 september 2023, Baku Azerbaijan
+>
+> *Initial version with service-lib@service-v0*
+> 
+> 
+> 24 october 2023, Ho Chi Minh City, Vietnam
+> 
+> *Proxy was replaced with service-lib@proxy-v0*
 
-The first version of [SDS framework](https://github.com/ahmetson/service-lib) is done!
-So let's create a simple project to test that framework works as expected.
+This is the demonstration of [SDS framework](https://github.com/ahmetson/service-lib)!
 
-As an example, let's create a todo app. It's an app for a one user.
+Its intention is to see that service creation works, proxies are running.
+
+The idea of the app is a todo list for a one user.
 The user may add items into the todo list. Once the task is done, it's removed from the list.
 
 The app is consisted of the three parts.

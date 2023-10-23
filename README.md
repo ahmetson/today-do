@@ -21,7 +21,8 @@ The user may add items into the todo list. Once the task is done, it's removed f
 The app is consisted of the three parts.
 
 1. *Frontend* &ndash; A web page written in [Next.js](https://nextjs.org/).
-2. *Web proxy* &ndash; A web proxy that converts requests over http protocol into zmq protocol.
+2. *Web proxy* &ndash; A web proxy to enable backend over http protocol.
+3. *List proxy* &ndash; A proxy that returns the task list after *Add* and **Done**.
 3. *Backend* &ndash; A backend written in SDS Framework.
 
 ## Backend
@@ -36,11 +37,16 @@ The backend is an API with the three routes.
 
 ---
 
-## Proxy
+## Web Proxy
 Receive the [message.Request](https://github.com/ahmetson/common-lib/blob/main/message/request.go#L23)
 from frontend in HTTP protocol. 
-The proxy forwards request to the backend in ZMQ protocol.
+The proxy forwards request to the destination in ZMQ protocol.
 The result from the backend is replied back to the frontend.
+
+## List Proxy
+It over-writes the replies. 
+For *Done* and *Add*, it fetches from backend the data using `List`.
+For all other commands, simply returns as it is.
 
 ---
 ## Frontend

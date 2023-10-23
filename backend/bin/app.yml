@@ -3,38 +3,38 @@ services:
       url: github.com/ahmetson/today-do
       id: todaydo
       manager:
-        serviceurl: ""
-        id: manager_1
-        port: 57397
-        targettype: 0
+        url: github.com/ahmetson/today-do
+        id: todaydo_manager
+        port: 54222
+        zmq_type: 4
       handlers:
         - type: SyncReplier
           category: main
-          instanceamount: 1
-          port: 57398
+          instance_amount: 1
+          port: 54223
           id: main_1
-      proxies: []
-      extensions: []
-      proxyorder: []
-    - type: Independent
-      url: github.com/ahmetson/today-do/proxy
-      id: web
-      manager:
-        serviceurl: ""
-        id: manager_1
-        port: 2096
-        targettype: 0
-      handlers:
-        - type: SyncReplier
-          category: main
-          instanceamount: 1
-          port: 2097
-          id: main_1
-        - type: Replier
-          category: entry
-          instanceamount: 1
-          port: 2626
-          id: entry_1
-      proxies: []
-      extensions: []
-      proxyorder: []
+      sources:
+        - proxies:
+            - proxy:
+                local:
+                    local_bin: ..\proxy\bin\test.exe
+                id: web-proxy
+                url: github.com/ahmetson/web-proxy
+                category: entry
+              manager:
+                url: github.com/ahmetson/web-proxy
+                id: web-proxy_manager
+                port: 54362
+                zmq_type: 4
+              clients:
+                - url: github.com/ahmetson/web-proxy
+                  id: web-proxymain_1
+                  port: 54363
+                  zmq_type: 6
+          rule:
+            urls:
+                - github.com/ahmetson/today-do
+            categories: []
+            commands: []
+            excluded_commands: []
+proxy_chains: []

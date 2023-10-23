@@ -2,10 +2,13 @@ package main
 
 import (
 	"fmt"
+	serviceConfig "github.com/ahmetson/config-lib/service"
 	"github.com/ahmetson/datatype-lib/data_type/key_value"
 	"github.com/ahmetson/datatype-lib/message"
 	"github.com/ahmetson/handler-lib/sync_replier"
+	"github.com/ahmetson/os-lib/path"
 	"github.com/ahmetson/service-lib"
+	"path/filepath"
 )
 
 const (
@@ -108,15 +111,34 @@ func main() {
 	}
 
 	todayDo.SetHandler("main", syncReplier)
+	local := serviceConfig.Local{
+		LocalBin: filepath.Join(path.BinPath("../proxy/bin", "test")),
+	}
+	webProxy := &serviceConfig.Proxy{
+		Local:    &local,
+		Id:       "web-proxy",
+		Url:      "github.com/ahmetson/web-proxy",
+		Category: "entry",
+	}
+	serviceRule := serviceConfig.NewServiceDestination(todayDo.Url())
+	fmt.Printf("service rule: %v to %s\n", *serviceRule, todayDo.Url())
+	proxyChain, err := serviceConfig.NewProxyChain(webProxy, serviceRule)
+	if err != nil {
+		panic(err)
+	}
+	err = todayDo.SetProxyChain(proxyChain)
+	if err != nil {
+		panic(err)
+	}
 
 	wg, err := todayDo.Start()
 	if err != nil {
 		panic(err)
 	}
 
-	println("waiting for the operations...")
+	println("waiting for the operations in backend...")
 
 	wg.Wait()
 
-	println("close the app")
+	println("close the backend app")
 }

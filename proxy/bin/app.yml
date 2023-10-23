@@ -1,0 +1,16 @@
+services:
+    - type: Proxy
+      url: github.com/ahmetson/web-proxy
+      id: web-proxy
+      manager:
+        url: github.com/ahmetson/web-proxy
+        id: web-proxy_manager
+        port: 54362
+        zmq_type: 4
+      handlers:
+        - type: Replier
+          category: web-proxymain
+          instance_amount: 1
+          port: 54363
+          id: web-proxymain_1
+proxy_chains: []

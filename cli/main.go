@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/ahmetson/client-lib"
-	"github.com/ahmetson/common-lib/data_type/key_value"
-	"github.com/ahmetson/common-lib/message"
+	"github.com/ahmetson/config-lib/service"
+	"github.com/ahmetson/datatype-lib/data_type/key_value"
+	"github.com/ahmetson/datatype-lib/message"
 	"github.com/ahmetson/os-lib/arg"
 	"github.com/pebbe/zmq4"
 	"strconv"
@@ -35,7 +36,7 @@ func main() {
 	fmt.Printf("executing\n")
 
 	if cmd == "add" {
-		params := key_value.Empty().Set("title", title).Set("description", description)
+		params := key_value.New().Set("title", title).Set("description", description)
 
 		req := message.Request{
 			Command:    "add",
@@ -61,7 +62,7 @@ func main() {
 			panic(err)
 		}
 
-		params := key_value.Empty().Set("number", number)
+		params := key_value.New().Set("number", number)
 
 		req := message.Request{
 			Command:    "done",
@@ -79,7 +80,7 @@ func main() {
 	} else if cmd == "list" {
 		req := message.Request{
 			Command:    "list",
-			Parameters: key_value.Empty(),
+			Parameters: key_value.New(),
 		}
 
 		reply, err := backend.Request(&req)
@@ -92,7 +93,7 @@ func main() {
 		fmt.Printf("flag --port must point to the manager of the service")
 		req := message.Request{
 			Command:    "close",
-			Parameters: key_value.Empty(),
+			Parameters: key_value.New(),
 		}
 
 		err = backend.Submit(&req)
@@ -101,5 +102,25 @@ func main() {
 		}
 
 		fmt.Printf("close signal send, check in other terminal that app is closed\n")
+	} else if cmd == "units" {
+		fmt.Printf("fetch the units from service manager")
+
+		rule := service.NewServiceDestination("github.com/ahmetson/today-do")
+
+		req := message.Request{
+			Command:    "units",
+			Parameters: key_value.New().Set("rule", *rule),
+		}
+		fmt.Printf("Request: %v\n", req)
+
+		reply, err := backend.Request(&req)
+		if err != nil {
+			panic(err)
+		}
+
+		if !reply.IsOK() {
+			fmt.Printf("failed to reply: %s\n", reply.ErrorMessage())
+		}
+		fmt.Printf("replied parameters: %v\n", reply.ReplyParameters())
 	}
 }

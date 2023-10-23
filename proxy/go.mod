@@ -1,7 +1,27 @@
 module github.com/ahmetson/today-do/proxy
 
 go 1.21rc2
+
 replace github.com/ahmetson/web-lib => D:/sds/web-lib
+
+replace github.com/ahmetson/web-proxy => D:/sds/web-proxy
+
+replace github.com/ahmetson/datatype-lib => D:/sds/datatype-lib
+
+replace github.com/ahmetson/handler-lib => D:/sds/handler-lib
+
+replace github.com/ahmetson/client-lib => D:/sds/client-lib
+
+replace github.com/ahmetson/config-lib => D:/sds/config-lib
+
+replace github.com/ahmetson/dev-lib => D:/sds/dev-lib
+
+replace github.com/ahmetson/os-lib => D:/sds/os-lib
+
+replace github.com/ahmetson/log-lib => D:/sds/log-lib
+
+replace github.com/ahmetson/service-lib => D:/sds/service-lib
+
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
